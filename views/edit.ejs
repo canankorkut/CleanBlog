@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Add New Post</h1>
+            <h1>Edit Post</h1>
 
           </div>
         </div>
@@ -24,24 +24,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form novalidate method="POST" action="/posts" encType="multipart/form-data">
+        <form novalidate method="POST" action="/posts/<%= post._id %>?_method=PUT" encType="multipart/form-data">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Title</label>
-              <input type="text" class="form-control" placeholder="Blog Title" id="name" name="title" required data-validation-required-message="Please enter the blog title.">
+              <label>Edit Post Title</label>
+              <input type="text" class="form-control" placeholder="Edit Blog Title" id="name" name="title" value="<%= post.title %>" required data-validation-required-message="Please enter the blog title.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Detail</label>
-              <textarea rows="5" class="form-control" placeholder="Blog Detail" id="message" name="detail" required data-validation-required-message="Please enter the blog detail."></textarea>
+              <label>Edit Post Details</label>
+              <textarea rows="5" class="form-control" placeholder="Edit Blog Details" id="message" name="detail" required data-validation-required-message="Please enter the blog detail."><%= post.detail %></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
           <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Add</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
         </form>
       </div>
     </div>
