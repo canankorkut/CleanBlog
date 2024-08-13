@@ -31,7 +31,7 @@
               <%= posts[i].title %>
             </h2>
             <h3 class="post-subtitle">
-              <%= posts[i].detail %>
+              <%= posts[i].detail.split(" ").slice(0, 10).join(" ") %>...
             </h3>
           </a>
           <p class="post-meta">Posted by

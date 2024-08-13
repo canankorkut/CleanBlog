@@ -9,10 +9,7 @@ const pageController = require('./controllers/pageController');
 const app = express();
 
 // Connect DB
-mongoose.connect('mongodb://localhost/cleanblog-test-db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect('mongodb://localhost/cleanblog-test-db');
 
 // Template engine
 app.set("view engine", "ejs");
