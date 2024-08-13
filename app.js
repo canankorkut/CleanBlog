@@ -5,15 +5,15 @@ const methodOverride = require('method-override');
 const ejs = require('ejs');
 const postController = require('./controllers/postControllers');
 const pageController = require('./controllers/pageController');
+require('dotenv').config();
 
 const app = express();
 
 // Connect DB
 const connectDb = async () => {
   try {
-    await mongoose.connect(
-      'mongodb+srv://canankorkut1:3BSDag0cly0S3J9c@cleanblog.5psk2.mongodb.net/cleanblog?retryWrites=true&w=majority&appName=cleanblog'
-    );
+    await mongoose.connect(process.env.MONGODB_CONNECT_URI);
+    console.log('Connect to MongoDB successfully');
   } catch (error) {
     console.log('Connect failed ' + error.message);
   }
