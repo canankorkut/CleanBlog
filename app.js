@@ -12,10 +12,16 @@ const app = express();
 // Connect DB
 const connectDb = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_CONNECT_URI);
-    console.log('Connect to MongoDB successfully');
+    const uri = process.env.MONGODB_CONNECT_URI;
+    if (!uri) {
+      throw new Error('MONGODB_CONNECT_URI is not defined');
+    }
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000,
+    });
+    console.log('Connected to MongoDB successfully');
   } catch (error) {
-    console.log('Connect failed ' + error.message);
+    console.log('Connect failed: ' + error.message);
   }
 };
 
