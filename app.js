@@ -52,7 +52,7 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPage);
 app.get('/posts/edit/:id', pageController.getEditPage);
 
-const port = process.env.port || 3000;
-app.listen(port, () => {
-  console.log(`The server is started on port ${port}.`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`The server is started on port ${PORT}.`);
 });
