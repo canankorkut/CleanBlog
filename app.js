@@ -9,7 +9,7 @@ const pageController = require('./controllers/pageController');
 const app = express();
 
 // Connect DB
-mongoose.connect('mongodb://localhost:27017/cleanblog-test-db');
+mongoose.connect('mongodb://127.0.0.1:27017/cleanblog-test-db');
 
 // Template engine
 app.set("view engine", "ejs");
