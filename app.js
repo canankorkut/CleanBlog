@@ -9,19 +9,31 @@ const pageController = require('./controllers/pageController');
 const app = express();
 
 // Connect DB
-mongoose.connect('mongodb://localhost/cleanblog-test-db');
+const connectDb = async () => {
+  try {
+    await mongoose.connect(
+      'mongodb+srv://canankorkut1:3BSDag0cly0S3J9c@cleanblog.5psk2.mongodb.net/cleanblog?retryWrites=true&w=majority&appName=cleanblog'
+    );
+  } catch (error) {
+    console.log('Connect failed ' + error.message);
+  }
+};
+
+connectDb();
 
 // Template engine
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 // Middlewares
 app.use(express.static('public'));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
-app.use(methodOverride('_method', {
-    methods:['POST', 'GET']
-}));
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  })
+);
 
 // Routes
 app.get('/', postController.getAllPosts);
@@ -34,7 +46,7 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPage);
 app.get('/posts/edit/:id', pageController.getEditPage);
 
-const port = 3000;
+const port = process.env.port || 3000;
 app.listen(port, () => {
-    console.log(`The server is started on port ${port}.`);
+  console.log(`The server is started on port ${port}.`);
 });
