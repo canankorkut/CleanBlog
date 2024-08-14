@@ -25,7 +25,7 @@ This project is a website developed to manage blog content, using Start Bootstra
    ```bash
     npm install
     ```
-3. **Set Environment Variables:**
+3. **Set Environment Variables:**  
    Create a `.env` file and add the following:
    ```bash
     MONGODB_CONNECT_URI=mongodb+srv://username:password@cluster0.mongodb.net/database
